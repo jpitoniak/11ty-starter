@@ -1,0 +1,36 @@
+# EditorConfig (https://editorconfig.org)
+
+root = true
+
+# rules for all files
+[*]
+end_of_line = ln
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+indent_style = space
+indent_size = 4
+
+# rules for HTML and WebC fiels
+[*.{html,htm,webc}]
+indent_size = 2
+
+# rules for JSON data files
+[*.json]
+indent_size = 2
+
+# rules for YAML files
+[*.{yaml,yml}]
+indent_size = 2
+
+# rules for CSS-related files
+[*.{css,sass,less}]
+indent_size = 2
+
+# rules for XML and SVG
+[*.{xml,rss,svg}]
+indent_size = 2
+
+# rules for Markdown files
+[*.md]
+trim_trailing_whitespace = false

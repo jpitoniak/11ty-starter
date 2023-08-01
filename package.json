@@ -1,0 +1,17 @@
+{
+  "name": "11ty-starter",
+  "version": "1.0.0",
+  "description": "Eleventy Static Site Starter",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx eleventy",
+    "watch": "npx eleventy --watch",
+    "serve": "npx eleventy --serve"
+  },
+  "author": "Jason R. Pitoniak",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-webc": "^0.11.1"
+  }
+}
