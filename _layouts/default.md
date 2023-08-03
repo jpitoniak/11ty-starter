@@ -8,11 +8,17 @@
 
     <link rel="stylesheet" href="https://unpkg.com/bamboo.css"> <!-- automatic dark/light mode -->
     <!-- <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/light.min.css"> (uncomment for light mode only) -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css"> (uncommonet for dark mode only) -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/bamboo.css/dist/dark.min.css"> (uncomment for dark mode only) -->
 
     <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css">
+
+    <script src="js/site.js" defer></script>
   </head>
   <body>
-    {{ content }}
+    {%  include "header.md" %}
+    <main>
+        {{ content }}
+    </main>
+    {% include "footer.md" %}
   </body>
 </html>
