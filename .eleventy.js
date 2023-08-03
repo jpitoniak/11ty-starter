@@ -1,6 +1,8 @@
 const yaml = require("js-yaml")
 const {parse} = require("csv-parse/sync")
 const pluginWebc = require("@11ty/eleventy-plugin-webc")
+const esbuild = require("esbuild")
+const {lessLoader} = require("esbuild-plugin-less")
 
 module.exports = function (eleventyConfig) {
     // copy directories of static files to the _site folder
@@ -42,9 +44,29 @@ module.exports = function (eleventyConfig) {
     	components: "_components/**/*.webc"
     })
 
+    // automatically build and deploy jssrc/site.js and less/site.less assets
+    eleventyConfig.on("afterBuild", () => {
+        return esbuild.build({
+            entryPoints: [
+                { out: "js/site", in: "./jssrc/site.js"},
+                { out: "css/site", in: "./less/site.less"},
+            ],
+            outdir: "_site",
+            bundle: true,
+            minify: process.env.ELEVENTY_ENV === "production",
+            sourcemap: process.env.ELEVENTY_ENV !== "production",
+            plugins: [lessLoader()]
+        })
+    })
+
+    // watch for changes in the jssrc and less directories
+    eleventyConfig.addWatchTarget("./jssrc")
+    eleventyConfig.addWatchTarget("./less")
+
 	return {
 		dir: {
             // look for layout files in _layouts instead of _includes
 			layouts: "_layouts"
 	    }
 	}
+}

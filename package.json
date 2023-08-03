@@ -4,14 +4,20 @@
   "description": "Eleventy Static Site Starter",
   "main": "index.js",
   "scripts": {
-    "build": "npx eleventy",
-    "watch": "npx eleventy --watch",
-    "serve": "npx eleventy --serve"
+    "build": "npm run clean; ELEVENTY_ENV=production npx @11ty/eleventy",
+    "build-test": "npx @11ty/eleventy",
+    "watch": "npx @11ty/eleventy --watch",
+    "serve": "npx @11ty/eleventy --serve"
+    "clean": "rm -rf _/site/*"
   },
   "author": "Jason R. Pitoniak",
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-webc": "^0.11.1"
+    "@11ty/eleventy-plugin-webc": "^0.11.1",
+    "csv-parse": "^5.4.0",
+    "esbuild": "^0.18.17",
+    "esbuild-plugin-less": "^1.2.1",
+    "js-yaml": "^4.1.0"
   }
 }
