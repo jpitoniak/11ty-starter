@@ -35,9 +35,10 @@ An Eleventy static-site started with sane defaults:
 The included `package.json` file includes several pre-defined scripts for building the site.  They can be run by calling `npm run {SCRIPT}` with one of the following scripts:
 
 * **build** - builds the site FOR PRODUCTION, which includes minifying JavaScript and CSS assets
-* **test** - builds the site FOR TESTING: assets won't be minified, but sourcemaps will be generated
+* **build-test** - builds the site FOR TESTING: assets won't be minified, but sourcemaps will be generated
 * **watch** - same as *test*, but Eleventy keeps running after the build to watch for changes and automatically rebuilds the site when any are detected
 * **serve** - same as *watch*, but Eleventy also starts a webserver on port 8080 for local testing
+* **clean** - delete everything from the _site directory.  This is automatically called when running *build*.
 
 ## JavaScript and Less
 
@@ -55,3 +56,4 @@ Some things I plan to add, when time allows:
 
 * **Precompression** - compressing web assets before they are served saves bandwidth and helps sites load faster.  Precompressing them (and configuring the web server to look for those precompressed files) allows for stronger compression and saves even more processing time
 * **Image Optimization** including automatic generation of webp versions of images
+* **Template Improvements** - add basic layout to sample site, navigation, etc.
