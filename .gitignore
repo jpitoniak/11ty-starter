@@ -2,3 +2,5 @@ _site
 .DS_SStore
 .sass-cache
 node_modules
+.env
+.cache
