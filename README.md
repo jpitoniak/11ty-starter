@@ -29,7 +29,7 @@ An Eleventy static-site started with sane defaults:
 1. If using 11ty-starter as a remote, periodically pull in 11ty-starter updates with:
 
         git fetch upstream
-        git rebase upstream/master
+        git rebase upstream/main
     
 ## Building the site
 
