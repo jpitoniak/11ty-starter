@@ -12,7 +12,8 @@ An Eleventy static-site started with sane defaults:
 * A Jekyll-style `markdownify` filter for parsing Markdown inside variables
 * Support for [WebC](https://www.11ty.dev/docs/languages/webc/) components
 * A default layout using [Bamboo CSS](https://rilwis.github.io/bamboo/)
-* Automatic building and minification of JavaScript and Less assets using [esbuild](https://esbuild.github.io/) (Yes, I prefer Less to Sass. I'm weird.) 
+* Automatic building and minification of JavaScript and Less assets using [esbuild](https://esbuild.github.io/) (Yes, I prefer Less to Sass. I'm weird.)
+* Tagging of JavaScript and CSS URLs with a version hash to prevent issues with agressive caching
 
 ## How To Use
 
@@ -20,10 +21,10 @@ An Eleventy static-site started with sane defaults:
     1. Give it a new name
     1. Give it a description, if desired
     1. Check "copy the main branch only" to avoid copying the history of this repo
+1. Clone the new repo to your local machine
 1. (Optional) Add 11ty-starter as a remote to allow future changes to the starter template to be incorporated in the new site:
 
         git remote add upstream https://github.com/jpitoniak/11ty-starter.git
-1. Clone the new repo to your local machine
 1. Start building your site
 1. If using 11ty-starter as a remote, periodically pull in 11ty-starter updates with:
 
@@ -36,7 +37,7 @@ The included `package.json` file includes several pre-defined scripts for buildi
 
 * **build** - builds the site FOR PRODUCTION, which includes minifying JavaScript and CSS assets
 * **build-test** - builds the site FOR TESTING: assets won't be minified, but sourcemaps will be generated
-* **watch** - same as *test*, but Eleventy keeps running after the build to watch for changes and automatically rebuilds the site when any are detected
+* **watch** - same as *build-test*, but Eleventy keeps running after the build to watch for changes and automatically rebuilds the site when any are detected
 * **serve** - same as *watch*, but Eleventy also starts a webserver on port 8080 for local testing
 * **clean** - delete everything from the _site directory.  This is automatically called when running *build*.
 
