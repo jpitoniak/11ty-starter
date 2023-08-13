@@ -6,8 +6,6 @@ const {lessLoader} = require("esbuild-plugin-less")
 const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster')
 const markdownItAttrs = require('markdown-it-attrs')
 
-
-
 module.exports = function (eleventyConfig) {
     // copy directories of static files to the _site folder
     eleventyConfig.addPassthroughCopy("css")
