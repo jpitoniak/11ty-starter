@@ -69,7 +69,7 @@ module.exports = function (eleventyConfig) {
     //   so build/copy them in an eleventy.before event handler
     eleventyConfig.addPlugin(cacheBuster({
         outputDirectory: './_site'
-    })
+    }))
 
     // watch for changes in the jssrc and less directories
     eleventyConfig.addWatchTarget("./jssrc")
