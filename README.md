@@ -10,6 +10,7 @@ An Eleventy static-site started with sane defaults:
 * Separate directories for layouts and includes
 * A default site.yml data file for Jekyll-style `site.*` global variables
 * A Jekyll-style `markdownify` filter for parsing Markdown inside variables
+* Support for additional attributes in Markdown
 * Support for [WebC](https://www.11ty.dev/docs/languages/webc/) components
 * A default layout using [Bamboo CSS](https://rilwis.github.io/bamboo/)
 * Automatic building and minification of JavaScript and Less assets using [esbuild](https://esbuild.github.io/) (Yes, I prefer Less to Sass. I'm weird.)

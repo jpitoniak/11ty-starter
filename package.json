@@ -19,6 +19,7 @@
     "csv-parse": "^5.4.0",
     "esbuild": "^0.18.17",
     "esbuild-plugin-less": "^1.2.1",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "markdown-it-attrs": "^4.1.6"
   }
 }

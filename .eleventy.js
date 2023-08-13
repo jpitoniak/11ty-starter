@@ -4,6 +4,7 @@ const pluginWebc = require("@11ty/eleventy-plugin-webc")
 const esbuild = require("esbuild")
 const {lessLoader} = require("esbuild-plugin-less")
 const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster')
+const markdownItAttrs = require('markdown-it-attrs')
 
 module.exports = function (eleventyConfig) {
     // build and copy assets before the site gets built
@@ -44,7 +45,7 @@ module.exports = function (eleventyConfig) {
     	html: true,  // allow html tags in markdown content
     	breaks: false, // do not treat newlines in markdown as <br> tags
     	linkify: true //convert bare URLs into links
-    })
+    }).use(markdownItAttrs)
 
     // implement Jekyll's markdownify plugin (parse markdown in variables)
 	eleventyConfig.addFilter("markdownify", value => (value) ? md.render(value) : '')
