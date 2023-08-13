@@ -6,28 +6,25 @@ const {lessLoader} = require("esbuild-plugin-less")
 const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster')
 const markdownItAttrs = require('markdown-it-attrs')
 
-module.exports = function (eleventyConfig) {
-    // build and copy assets before the site gets built
-    eleventyConfig.on("eleventy.before", async ({ dir, runMode, outputMode }) => {
-        // copy directories of static files to the _site folder
-        // this mainly needed for css and js files to allow eleventy-plugin-cache-buster
-        // to work its magic
-        eleventyConfig.addPassthroughCopy("css")
-        eleventyConfig.addPassthroughCopy("images")
-        eleventyConfig.addPassthroughCopy("js")
 
-        // build jssrc/site.js and less/site.less
-        return esbuild.build({
-            entryPoints: [
-                { out: "js/site", in: "./jssrc/site.js"},
-                { out: "css/site", in: "./less/site.less"},
-            ],
-            outdir: "_site",
-            bundle: true,
-            minify: process.env.ELEVENTY_ENV === "production",
-            sourcemap: process.env.ELEVENTY_ENV !== "production",
-            plugins: [lessLoader()]
-        })
+
+module.exports = function (eleventyConfig) {
+    // copy directories of static files to the _site folder
+    eleventyConfig.addPassthroughCopy("css")
+    eleventyConfig.addPassthroughCopy("images")
+    eleventyConfig.addPassthroughCopy("js")
+
+    // build jssrc/site.js and less/site.less
+    esbuild.build({
+        entryPoints: [
+            { out: "js/site", in: "./jssrc/site.js"},
+            { out: "css/site", in: "./less/site.less"},
+        ],
+        outdir: "_site",
+        bundle: true,
+        minify: process.env.ELEVENTY_ENV === "production",
+        sourcemap: process.env.ELEVENTY_ENV !== "production",
+        plugins: [lessLoader()]
     })
 
     // process Markdown and HTML templates; copy image files and PDFs that are stored anywhere in the site
@@ -64,16 +61,13 @@ module.exports = function (eleventyConfig) {
     	components: "_components/**/*.webc"
     })
 
-    // tag CSS and JS link URLs with a hash to avoid cache issues
-    // note: linked assets must already be in _site for this to work,
-    //   so build/copy them in an eleventy.before event handler
-    eleventyConfig.addPlugin(cacheBuster({
-        outputDirectory: './_site'
-    }))
-
     // watch for changes in the jssrc and less directories
     eleventyConfig.addWatchTarget("./jssrc")
     eleventyConfig.addWatchTarget("./less")
+
+    eleventyConfig.addPlugin(cacheBuster({
+        outputDirectory: './_site'
+    }))
 
 	return {
 		dir: {
