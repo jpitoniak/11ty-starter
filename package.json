@@ -8,7 +8,7 @@
     "build-test": "npx @11ty/eleventy",
     "watch": "npx @11ty/eleventy --watch",
     "serve": "npx @11ty/eleventy --serve",
-    "clean": "rm -rf _/site/*"
+    "clean": "rm -rf _site/*"
   },
   "author": "Jason R. Pitoniak",
   "license": "MIT",
