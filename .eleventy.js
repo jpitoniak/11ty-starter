@@ -5,6 +5,7 @@ const esbuild = require("esbuild")
 const {lessLoader} = require("esbuild-plugin-less")
 const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster')
 const markdownItAttrs = require('markdown-it-attrs')
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function (eleventyConfig) {
     // copy directories of static files to the _site folder
@@ -66,6 +67,9 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(cacheBuster({
         outputDirectory: './_site'
     }))
+
+    // enable the Eleventy Navigation plugin
+    eleventyConfig.addPlugin(eleventyNavigationPlugin)
 
 	return {
 		dir: {
