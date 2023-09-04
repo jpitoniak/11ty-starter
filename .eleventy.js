@@ -13,19 +13,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("images")
     eleventyConfig.addPassthroughCopy("js")
 
-    // build jssrc/site.js and less/site.less
-    esbuild.build({
-        entryPoints: [
-            { out: "js/site", in: "./jssrc/site.js"},
-            { out: "css/site", in: "./less/site.less"},
-        ],
-        outdir: "_site",
-        bundle: true,
-        minify: process.env.ELEVENTY_ENV === "production",
-        sourcemap: process.env.ELEVENTY_ENV !== "production",
-        plugins: [lessLoader()]
-    })
-
     // process Markdown and HTML templates; copy image files and PDFs that are stored anywhere in the site
 	eleventyConfig.setTemplateFormats([
 		'md',
@@ -70,6 +57,21 @@ module.exports = function (eleventyConfig) {
 
     // enable the Eleventy Navigation plugin
     eleventyConfig.addPlugin(eleventyNavigationPlugin)
+
+    eleventyConfig.on("eleventy.before", () => {
+        // build jssrc/site.js and less/site.less
+        return esbuild.build({
+            entryPoints: [
+                { out: "js/site", in: "./jssrc/site.js"},
+                { out: "css/site", in: "./less/site.less"},
+            ],
+            outdir: "_site",
+            bundle: true,
+            minify: process.env.ELEVENTY_ENV === "production",
+            sourcemap: process.env.ELEVENTY_ENV !== "production",
+            plugins: [lessLoader()]
+        })
+    })
 
 	return {
 		dir: {
