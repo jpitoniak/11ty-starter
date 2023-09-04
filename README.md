@@ -12,6 +12,8 @@ An Eleventy static-site started with sane defaults:
 * A Jekyll-style `markdownify` filter for parsing Markdown inside variables
 * Support for additional attributes in Markdown
 * Support for [WebC](https://www.11ty.dev/docs/languages/webc/) components
+* Support for [Eleventy Navigation](https://www.11ty.dev/docs/plugins/navigation/)
+* Support for embedding templates within templates via thr [Render](https://www.11ty.dev/docs/plugins/render/) plugin (useful with WebC)
 * A default layout using [Bamboo CSS](https://rilwis.github.io/bamboo/)
 * Automatic building and minification of JavaScript and Less assets using [esbuild](https://esbuild.github.io/) (Yes, I prefer Less to Sass. I'm weird.)
 * Tagging of JavaScript and CSS URLs with a version hash to prevent issues with agressive caching
