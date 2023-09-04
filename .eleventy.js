@@ -3,8 +3,8 @@ const {parse} = require("csv-parse/sync")
 const pluginWebc = require("@11ty/eleventy-plugin-webc")
 const esbuild = require("esbuild")
 const {lessLoader} = require("esbuild-plugin-less")
-const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster')
-const markdownItAttrs = require('markdown-it-attrs')
+const cacheBuster = require("@mightyplow/eleventy-plugin-cache-buster")
+const markdownItAttrs = require("markdown-it-attrs")
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
 module.exports = function (eleventyConfig) {
@@ -15,12 +15,12 @@ module.exports = function (eleventyConfig) {
 
     // process Markdown and HTML templates; copy image files and PDFs that are stored anywhere in the site
 	eleventyConfig.setTemplateFormats([
-		'md',
-		'html',
-		'jpg',
-		'jpeg',
-		'png',
-		'pdf'
+		"md",
+		"html",
+		"jpg",
+		"jpeg",
+		"png",
+		"pdf"
 	]);
 
     // custom markdown filters
@@ -31,7 +31,7 @@ module.exports = function (eleventyConfig) {
     }).use(markdownItAttrs)
 
     // implement Jekyll's markdownify plugin (parse markdown in variables)
-	eleventyConfig.addFilter("markdownify", value => (value) ? md.render(value) : '')
+	eleventyConfig.addFilter("markdownify", value => (value) ? md.render(value) : "")
 
 	// allow parsng yaml data files
     eleventyConfig.addDataExtension("yaml, yml", contents => yaml.load(contents));
@@ -52,7 +52,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget("./less")
 
     eleventyConfig.addPlugin(cacheBuster({
-        outputDirectory: './_site'
+        outputDirectory: "./_site"
     }))
 
     // enable the Eleventy Navigation plugin
