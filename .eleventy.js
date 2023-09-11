@@ -9,6 +9,11 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation")
 const { EleventyRenderPlugin } = require("@11ty/eleventy")
 
 module.exports = function (eleventyConfig) {
+    // ignore the _drafts directory when building for production
+    if(process.env.ELEVENTY_ENV === "production" || process.env.SKIP_DRAFTS == true) {
+        eleventyConfig.ignores.add("_drafts")
+    }
+
     // copy directories of static files to the _site folder
     eleventyConfig.addPassthroughCopy("css")
     eleventyConfig.addPassthroughCopy("images")
