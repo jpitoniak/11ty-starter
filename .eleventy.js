@@ -74,6 +74,15 @@ module.exports = function (eleventyConfig) {
                 { out: "js/site", in: "./jssrc/site.js"},
                 { out: "css/site", in: "./less/site.less"},
             ],
+            external: [  // don't try to include images and fonts when building css files
+                "*.svg",
+                "*.jpg",
+                "*.png",
+                "*.gif",
+                "*.webp",
+                "*.woff",
+                "*.woff2"
+            ],
             outdir: "_site",
             bundle: true,
             minify: process.env.ELEVENTY_ENV === "production",
