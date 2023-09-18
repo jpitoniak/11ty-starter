@@ -35,6 +35,7 @@ module.exports = function (eleventyConfig) {
     	breaks: false, // do not treat newlines in markdown as <br> tags
     	linkify: true //convert bare URLs into links
     }).use(markdownItAttrs)
+    eleventyConfig.setLibrary("md", md)
 
     // implement Jekyll's markdownify plugin (parse markdown in variables)
 	eleventyConfig.addFilter("markdownify", value => (value) ? md.render(value) : "")
