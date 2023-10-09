@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{{ site.baseurl }}/css/site.css">
 
-    <script src="js/site.js" defer></script>
+    <script src="{{ site.baseurl }}/js/site.js" defer></script>
   </head>
   <body>
     {%  include "header.md" %}
